@@ -11,7 +11,6 @@ export class DataService implements IDataService {
 
     fetchData(config) {
         const stringifiedConfig = JSON.stringify(config);
-        console.log(stringifiedConfig);
         if (this.cachedData.has(stringifiedConfig)) return of(this.cachedData.get(stringifiedConfig));
         const { method, url, options } = config;
         return this.httpClient.request(method, url, options).pipe(
